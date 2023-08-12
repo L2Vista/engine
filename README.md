@@ -13,7 +13,13 @@ To run the L2Vista Chatbot, follow these steps:
    $ pip install -r requirements.txt
    ```
 
-2. Run the chatbot using `gunicorn`:
+2. Set the OPENAI API Key:
+
+    ```bash
+    $ export OPENAI_API_KEY="sk-..."
+    ```
+
+3. Run the chatbot using `gunicorn`:
 
    ```bash
    $ gunicorn -w 1 -b 0.0.0.0:30327 flask_server:app
