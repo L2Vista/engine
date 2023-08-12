@@ -44,18 +44,22 @@ L2Vista Chatbot: Got it! You're interested in CCIP transactions heading to Mode.
 User: Yes, I'm looking for transactions involving the address 0x123456789abcdef.
 L2Vista Chatbot: Perfect! I'll now search for CCIP and Hyperlane transactions from all Layer-2 chains involving the address 0x123456789abcdef. Give me a moment to fetch the results.
 
+User: I'm looking for a transaction with hash of 0x123456789abcdef.
+L2Vista Chatbot: Got it! Give me a moment to fetch the results. I'll now search for a transaction whose id is 0x123456789abcdef.
+
 User: {input}
 L2Vista Chatbot:"""
 l2vista_prompt = PromptTemplate.from_template(_DEFAULT_TEMPLATE)
 
 
-_PARSING_TEMPLATE = """Respond with a tuple of four strings, ([FROM_CHAIN], [TO_CHAIN], [CATEGORY], [ADDRESS]).
+_PARSING_TEMPLATE = """Respond with a tuple of five strings, ([FROM_CHAIN], [TO_CHAIN], [CATEGORY], [ADDRESS], [TX_HASH]).
 - [FROM_CHAIN]: If the current conversation contains the information about from-chain or where the message is from, fill it. If not, fill with null. (Options: Optimism, Base, Zora, Mode, null)
 - [TO_CHAIN]: If the current conversation contains the information about to-chain or where the message should go, fill it. If not, fill with null. (Options: Optimism, Base, Zora, Mode, null)
 - [CATEGORY]: If the current conversation contains the information about which cross-chain messaging protocol is used, fill it. If not, fill with null. (Options: CCIP, Hyperlane, null)
 - [ADDRESS]: If the current conversation contains the information about an address, fill it. If not, fill with null. (Format: Ethereum Address with the prefix 0x)
+- [TX_HASH]: If the current conversation contains the information about an transaction hash, fill it. If not, fill with null. (Format: Ethereum Transaction hash with the prefix 0x)
 
-Please respond with the form of tuple ([FROM_CHAIN], [TO_CHAIN], [CATEGORY], [ADDRESS]) only.
+Please respond with the form of tuple ([FROM_CHAIN], [TO_CHAIN], [CATEGORY], [ADDRESS], [TX_HASH]) only.
 
 Current conversation:
 User: {human_input}

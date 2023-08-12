@@ -36,6 +36,13 @@ The chatbot's response will typically include the AI-generated output, as well a
 ```json
 {
   "ai_output": "I apologize for the confusion. Let me gather the transactions using the CCIP protocol that are heading to Mode for you. Please wait a moment while I retrieve the information.",
-  "parsed": ["null", "mode", "ccip", "null"]
+  "parsed": ["null", "mode", "ccip", "null", "null"]
 }
 ```
+
+`"parsed": ["null", "mode", "ccip", "null", "null"]` means:
+- [FROM_CHAIN]: If the current conversation contains the information about from-chain or where the message is from, fill it. If not, fill with null. (Options: Optimism, Base, Zora, Mode, null)
+- [TO_CHAIN]: If the current conversation contains the information about to-chain or where the message should go, fill it. If not, fill with null. (Options: Optimism, Base, Zora, Mode, null)
+- [CATEGORY]: If the current conversation contains the information about which cross-chain messaging protocol is used, fill it. If not, fill with null. (Options: CCIP, Hyperlane, null)
+- [ADDRESS]: If the current conversation contains the information about an address, fill it. If not, fill with null. (Format: Ethereum Address with the prefix 0x)
+- [TX_HASH]: If the current conversation contains the information about an transaction hash, fill it. If not, fill with null. (Format: Ethereum Transaction hash with the prefix 0x)

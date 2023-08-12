@@ -18,8 +18,8 @@ llm = ChatOpenAI(
 # https://platform.openai.com/docs/models/gpt-4
 
 
-# [LLM output, (from_chain, to_chain, category, address)]
-def conversation(human_input: str) -> Tuple[str, Tuple[str, str, str, str]]:
+# [LLM output, (from_chain, to_chain, category, address, tx_hash)]
+def conversation(human_input: str) -> Tuple[str, Tuple[str, str, str, str, str]]:
     """check input"""
     ai_output = llm.predict(
         templetes.l2vista_prompt.format(
