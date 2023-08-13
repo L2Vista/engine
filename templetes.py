@@ -56,8 +56,8 @@ l2vista_prompt = PromptTemplate.from_template(_DEFAULT_TEMPLATE)
 
 
 _PARSING_TEMPLATE = """Respond with a tuple of five strings, ([FROM_CHAIN], [TO_CHAIN], [CATEGORY], [ADDRESS], [TX_HASH]).
-- [FROM_CHAIN]: If the current conversation contains the information about from-chain or where the message is from, fill it. If not, fill with null. (Options: Optimism, Base, Zora, Mode, Sepolia, BNB, Avalanche, Moonbase, Goerli, Celo, Arbitrum, null)
-- [TO_CHAIN]: If the current conversation contains the information about to-chain or where the message should go, fill it. If not, fill with null. (Options: Optimism, Base, Zora, Mode, Sepolia, BNB, Avalanche, Moonbase, Goerli, Celo, Arbitrum, null)
+- [FROM_CHAIN]: If the current conversation contains the information about from-chain or where the message is from, fill it. If not, fill with null. (Options: Optimism, Base, Zora, Mode, Sepolia, BNB, Avalanche, Moonbase, Goerli, Celo, Arbitrum, Polygon, null)
+- [TO_CHAIN]: If the current conversation contains the information about to-chain or where the message should go, fill it. If not, fill with null. (Options: Optimism, Base, Zora, Mode, Sepolia, BNB, Avalanche, Moonbase, Goerli, Celo, Arbitrum, Polygon, null)
 - [CATEGORY]: If the current conversation contains the information about which cross-chain messaging protocol is used, fill it. If not, fill with null. (Options: CCIP, Hyperlane, null)
 - [ADDRESS]: If the current conversation contains the information about an address, fill it. If not, fill with null. (Format: Ethereum Address with the prefix 0x)
 - [TX_HASH]: If the current conversation contains the information about an transaction hash, fill it. If not, fill with null. (Format: Ethereum Transaction hash with the prefix 0x)
