@@ -1,7 +1,11 @@
 import re
 
 
-def parse(response):
+def parse(response: str):
+    response = response.replace("None", "null")
+    response = response.replace("none", "null")
+    response = response.replace("Null", "null")
+
     pattern = r"(?i)\(\s*(?:['\"])?([^,'\"]+)(?:['\"])?\s*,\s*(?:['\"])?([^,'\"]+)(?:['\"])?\s*,\s*(?:['\"])?([^,'\"]+)(?:['\"])?\s*,\s*(?:['\"])?([^,'\"]+)(?:['\"])?\s*,\s*(?:['\"])?([^,'\"]+)(?:['\"])?\s*\)"
     match = re.match(pattern, response)
 
@@ -20,9 +24,9 @@ def parse(response):
 if __name__ == "__main__":
     test_responses = [
         "('null', 'Base', 'CCIP', '0x993706A4fc0bBB2dDC10984562d174A51326bbcD', '0x23d57c2d9dcc618910ab5e918e7a8899c61c6b98095e1a4e48713ef755d67dd0')",
-        "(Optimism, 'null', 'CCIP', 'null', '0x23d57c2d9dcc618910ab5e918e7a8899c61c6b98095e1a4e48713ef755d67dd0')",
+        "(sepolia, 'null', 'CCIP', 'null', '0x23d57c2d9dcc618910ab5e918e7a8899c61c6b98095e1a4e48713ef755d67dd0')",
         "(null, 'BASE', null, null, null)",
-        "('OpTimism', 'basE', 'null', '0x993706A4fc0bBB2dDC10984562d174A51326bbcD', 0x23d57c2d9dcc618910ab5e918e7a8899c61c6b98095e1a4e48713ef755d67dd0)",
+        "('BNB', 'basE', 'null', '0x993706A4fc0bBB2dDC10984562d174A51326bbcD', 0x23d57c2d9dcc618910ab5e918e7a8899c61c6b98095e1a4e48713ef755d67dd0)",
         "('OPTIMISM', 'BASE', 'CCIP', '0x993706A4fc0bBB2dDC10984562d174A51326bbcD', '0x23d57c2d9dcc618910ab5e918e7a8899c61c6b98095e1a4e48713ef755d67dd0')"
     ]
 
